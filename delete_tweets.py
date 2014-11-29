@@ -30,7 +30,6 @@ class RemoveTweet:
             try:
                 count -= 200
                 for tweet in last_tweets:
-                    print tweet.text
                     self.api.destroy_status(tweet.id)
                 if count < 0:
                     break
@@ -64,8 +63,7 @@ class RemoveTweet:
             try:
                 for tweet in last_tweets:
                     #remove tweet
-                    print tweet.text
-                    #self.api.destroy_status(tweet.id)
+                    self.api.destroy_status(tweet.id)
                 #take next 200 tweet
                 last_tweets = self.api.user_timeline(screen_name=username, count=200, max_id=oldest_id)
                 if len(last_tweets) > 0:
